@@ -40,7 +40,7 @@ func DefaultDiagnosticDisplayOptions() uint32 {
 //
 // Returns The name of the given diagnostic category.
 func GetDiagnosticCategoryName(category uint32) string {
-	o := cxstring{C.clang_getDiagnosticCategoryName(C.uint(category))}
+	o := cxstring{C.clang_getDiagnosticCategoryText(C.CXDiagnostic(uintptr(category)))}
 	defer o.Dispose()
 
 	return o.String()
